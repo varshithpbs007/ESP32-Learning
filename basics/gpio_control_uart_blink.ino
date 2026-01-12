@@ -12,6 +12,7 @@
 */
 
 
+//This code makes me understand GPIO's INPUT(virtual in this code for understanding GPIO) and OUTPUT
 
 #define LED_PIN 2
 void setup() {
