@@ -5,3 +5,4 @@ This repository contains basic ESP32 firmware examples written using the Arduino
 ## Projects
 - LED Blink (GPIO output, delay)
 - UART LED Control ( Serial communication)
+- Button Simulation as input to GPIO 
