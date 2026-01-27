@@ -12,3 +12,6 @@
 * i.e., Strapping pin state matters ONLY at the boot time
 
 ### GPIO 0 ( The most impoertant pin ):
+* If we can understand GPIO 0, we can understand esp32 booting
+* At boot, esp32 asks GPIO 0, Should I run user code or wait for programming
+* The decision logic is,
