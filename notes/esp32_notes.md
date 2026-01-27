@@ -23,9 +23,9 @@
 ### GPIO 2:
 ### GPIO 12:
 ### GPIO 15:
-### Flash pins (GPIO 6 - 11):
+## Flash pins (GPIO 6 - 11):
 
-### Input-only pins ( GPIO 34,35,36,39 ):
+## Input-only pins ( GPIO 34,35,36,39 ):
 * These pins can READ voltage.
 * But, they cannot DRIVE voltage.
 * So, these input-only pins are great for sensors and useless for LEDs.
