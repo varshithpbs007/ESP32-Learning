@@ -1,4 +1,4 @@
-# ESP32 Concepts
+# ESP32 Notes
 ## What happens just after power is supplied and esp32 is powered on:
 * Analogically esp32 is reborn everytime its powered up
 * After powering up the bootloader ( factory code burned into ROM ) is executed to decide the role of esp32 ( to run usercode i.e., firmware or to wait for programming )
