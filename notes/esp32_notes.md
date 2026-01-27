@@ -11,7 +11,7 @@
 * After the checking is done GPIOs are back to being normal pins from strapping pins
 * i.e., Strapping pin state matters ONLY at the boot time
 
-### GPIO 0 ( The most impoertant pin ):
+### GPIO 0 ( The most important pin ):
 * If we can understand GPIO 0, we can understand esp32 booting.
 * GPIO0 is the most important boot-strapping pin in the ESP32.
 * At reset, the ESP32’s ROM bootloader samples GPIO0 to decide the boot mode. Note that the reset can be of two types, one is power-on reset and second is EN(reset) pin toggling.
