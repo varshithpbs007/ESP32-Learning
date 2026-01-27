@@ -24,5 +24,13 @@
 ### GPIO 12:
 ### GPIO 15:
 ### Flash pins (GPIO 6 - 11):
-### Input-only pins:
+
+### Input-only pins ( GPIO 34,35,36,39 ):
+* These pins can READ voltage.
+* But, they cannot DRIVE voltage.
+* So, these input-only pins are great for sensors and useless for LEDs.
+* Using them as output doesnot damage anything, but simply doesnot work.
+  
 ## Safe Pin Philosophy:
+* The basic thumb-rule is use pins the bootloader doesnot care about and are ignored during boot.
+* Safe GPIOs for DOIT ESP32 DEVKIT V1 are GPIO 4,5,18,19,21,22,23
