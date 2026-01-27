@@ -12,6 +12,17 @@
 * i.e., Strapping pin state matters ONLY at the boot time
 
 ### GPIO 0 ( The most impoertant pin ):
-* If we can understand GPIO 0, we can understand esp32 booting
-* At boot, esp32 asks GPIO 0, Should I run user code or wait for programming
-* The decision logic is,
+* If we can understand GPIO 0, we can understand esp32 booting.
+* GPIO0 is the most important boot-strapping pin in the ESP32.
+* At reset, the ESP32’s ROM bootloader samples GPIO0 to decide the boot mode. Note that the reset can be of two types, one is power-on reset and second is EN(reset) pin toggling.
+* If GPIO0 is HIGH(3.3V), the ESP32 boots normally and executes user firmware from SPI flash.
+* If GPIO0 is LOW(0V), the ESP32 enters UART download mode and waits for new firmware.
+* This design ensures that even if the firmware in flash is corrupted, the chip remains programmable.
+* On development boards, the USB-to-UART interface (generally a USB-to-UART chip) automatically pulls GPIO0 low using the wired DTR(Data Terminal Ready) signal, resets the chip during flashing (EN pin toggle) using wired RTS(Ready to Send) signal, which is why we can upload code from Arduino IDE without manual intervention.
+
+### GPIO 2:
+### GPIO 12:
+### GPIO 15:
+### Flash pins (GPIO 6 - 11):
+### Input-only pins:
+## Safe Pin Philosophy:
