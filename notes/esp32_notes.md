@@ -1,4 +1,12 @@
 # ESP32 Notes
+* ESP Devkit = ESP32 + Other components.
+* ESP32 is a powerful 32-bit microcontroller SoC made by ESPRESSIF.
+* ESP32 has built-in WiFi (2.4 GHz 802.11 b/g/n)and Bluetooth (Classic + BLE).
+* ESP32 can run up to 240 MHz, i.e., has clock options of 80,160,240 MHz.
+* It is dual-core (Tensilica Xtensa LX6 cores).
+* ESP32 DevKit has a voltage regulator (1117 33 e447) which converts 5v (USB/Vin) from usb to 3.3v which esp32 can handle.
+* It has a USB-to-serial converter (CH9102X), which helps us flash code and also access the serial monitor.
+* 
 ## What happens just after power is supplied and esp32 is powered on:
 * Analogically esp32 is reborn everytime its powered up
 * After powering up the bootloader ( factory code burned into ROM ) is executed to decide the role of esp32 ( to run usercode i.e., firmware or to wait for programming )
