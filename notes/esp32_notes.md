@@ -6,6 +6,8 @@
 * It is dual-core (Tensilica Xtensa LX6 cores).
 * ESP32 DevKit has a voltage regulator (1117 33 e447) which converts 5v (USB/Vin) from usb to 3.3v which esp32 can handle.
 * It has a USB-to-serial converter (CH9102X), which helps us flash code and also access the serial monitor.
+* ESP32 DevKit has an EN (Reset) button, which when pushed pulls the EN low and resets the eps32, and releasing the button bring EN to high again to enable esp32 to restart execution again.
+* i.e., EN = 3.3v(HIGH/untouched) means ESP32 runs, if EN = 0v(LOW/Pushed) means ESP32 is held in reset.
 * 
 ## What happens just after power is supplied and esp32 is powered on:
 * Analogically esp32 is reborn everytime its powered up
