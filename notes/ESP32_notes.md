@@ -1,5 +1,7 @@
 # ESP32 Notes
+## Key Points:
 * ESP Devkit = ESP32 + Other components.
+* The ESP32 core module is shielded with a metallic cover to isolate it on the DevKit to reduce EM interference and obtain clean signals. The metallic cover also acts as a natural heat sink.
 * ESP32 is a powerful 32-bit microcontroller SoC made by ESPRESSIF.
 * ESP32 has built-in WiFi (2.4 GHz 802.11 b/g/n)and Bluetooth (Classic + BLE).
 * ESP32 can run up to 240 MHz, i.e., has clock options of 80,160,240 MHz.
@@ -12,6 +14,17 @@
 * SRAM is very fast, but Volatile (lost when power off) and its size is fixed at fabrication.
 * 4 MB external flash memory is a seperate IC block on the DevKit and is connected via SPI/QSPI lines to esp32. Its used for program code(.text), constants, Firmware, File systems (SPIFFS/LittleFS), OTA updates.
 * External flash memory is non-volatile (retains data without power), but slower than SRAM.
+
+  
+## Power Pins:
+* ESP32 is a low-power microcontroller and runs at only 3.3V.
+* Although technically ESP32 has 48 pins, only 30 of them are broken out and accessible through the DevKit peripherally as Power pins and GPIOs, because some pins are internally used (flash, boot, power).
+* We totally have 4 power-related pins, namely VIN, GND, 3V3, and GND.
+* ESP32 DevKit has a VIN pin, and a GND pin on the left bottom side to which we can connect any 5V source externally and through the voltage regulator (1117 33 e447) on board, which regulates it to 3.3V at the right bottom side to use with 3V3 and GND pins.
+* Remaining 26 pins are GPIOs
+
+
+
 ## What happens just after power is supplied and esp32 is powered on:
 * Analogically, ESP32 is reborn every time it's powered up.
 * After powering up, the ROM bootloader (factory code burned into ROM) is executed to decide the role of esp32 ( It should run user code i.e., firmware, or to wait for programming).
