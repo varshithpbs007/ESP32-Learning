@@ -7,3 +7,5 @@ This repository contains basic ESP32 firmware examples/experiments written using
 2. UART LED Control ( Serial communication)
 3. Button Simulation as input to GPIO
 4. Input-Decision-Output ( full_loop ) 
+
+## ESP32 Wi-Fi (STA+AP) mode
