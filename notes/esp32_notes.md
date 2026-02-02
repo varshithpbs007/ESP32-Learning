@@ -6,20 +6,31 @@
 * It is dual-core (Tensilica Xtensa LX6 cores).
 * ESP32 DevKit has a voltage regulator (1117 33 e447) which converts 5v (USB/Vin) from usb to 3.3v which esp32 can handle.
 * It has a USB-to-serial converter (CH9102X), which helps us flash code and also access the serial monitor.
-* ESP32 DevKit has an EN (Reset) button, which when pushed pulls the EN low and resets the eps32, and releasing the button bring EN to high again to enable esp32 to restart execution again.
+* ESP32 DevKit has an EN (Reset) button, which when pushed pulls the EN low and resets the ESP32, and releasing the button brings EN to high again to enable ESP32 to restart execution.
 * i.e., EN = 3.3v(HIGH/untouched) means ESP32 runs, if EN = 0v(LOW/Pushed) means ESP32 is held in reset.
-* 
+* 512 Kb internal SRAM, which is inside the ESP32 chip itself, etched on the same silicon die as CPU cores and registers. Internal SRAM is used for stack, heap, Global/static variables, RTOS tasks, and Runtime data.
+* SRAM is very fast, but Volatile (lost when power off) and its size is fixed at fabrication.
+* 4 MB external flash memory is a seperate IC block on the DevKit and is connected via SPI/QSPI lines to esp32. Its used for program code(.text), constants, Firmware, File systems (SPIFFS/LittleFS), OTA updates.
+* External flash memory is non-volatile (retains data without power), but slower than SRAM.
 ## What happens just after power is supplied and esp32 is powered on:
-* Analogically esp32 is reborn everytime its powered up
-* After powering up the bootloader ( factory code burned into ROM ) is executed to decide the role of esp32 ( to run usercode i.e., firmware or to wait for programming )
-* Then the bootloader decides if the user code/ firmware, which is in the flash memory ( containing setup() and loop() ) should run or not
-* To decide the role of esp32, the bootloader checks few pins called "strapping pins"
-* Strapping pins are GPIO pins whose voltage is read at power-up to decide how the esp32 should start
+* Analogically, ESP32 is reborn every time it's powered up.
+* After powering up, the ROM bootloader (factory code burned into ROM) is executed to decide the role of esp32 ( It should run user code i.e., firmware, or to wait for programming).
+* Then the bootloader decides if the user code/ firmware, which is in the flash memory (containing setup() and loop()), should run or not.
+* To decide the role of ESP32, the bootloader checks a few pins called "strapping pins."
+* Strapping pins are GPIO pins whose voltage is read at power-up to decide how the ESP32 should start.
+  ### Boot Process (Physically)
+  1. ESP32 powers ON.
+  2. ROM bootloader (inside chip) runs.
+  3. Firmware is read from external flash.(If GPIO 0 is High(3.3V) which is normal)
+  4. Code is:
+     * Executed directly from flash (XIP), or
+     * Copied into internal SRAM
+  5. Variables live in SRAM during execution. 
 
 ## Sampling a strapping pin at boot:
-* Sampling a strapping pin at boot means that after power ON, esp32 waits for few microseconds and then reads voltage on GPIO 0,2,12,15 and then makes decisions based on their voltages and continues boot
-* After the checking is done GPIOs are back to being normal pins from strapping pins
-* i.e., Strapping pin state matters ONLY at the boot time
+* Sampling a strapping pin at boot means that after power ON, esp32 waits for a few microseconds and then reads voltage on GPIO 0,2,12,15, and then makes decisions based on their voltages and continues boot.
+* After the checking is done GPIOs are back to being normal pins from strapping pins.
+* i.e., Strapping pin state matters ONLY at boot time, Therefore they are also called bootstrapping pins.
 
 ### GPIO 0 ( The most important pin ):
 * If we can understand GPIO 0, we can understand esp32 booting.
