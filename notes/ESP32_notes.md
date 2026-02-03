@@ -1,4 +1,31 @@
 # ESP32 Notes
+# Index:
+* Key Points
+* What happens just after power is supplied and the ESP32 is powered on
+    * Boot Process (Physically)
+* Power Pins & GPIOs
+* Bootstrapping pins
+* Flash pins (GPIO 6 - 11) [NEVER TOUCH THEM]
+* Input-only pins ( GPIO 34,35,36,39 )
+* Safe Pin Philosophy
+* Analog input pins
+* PWM (Pulse Width Modulation) pins
+*  DAC Pins
+*  How ESP32 Talks to Other Devices (Communication Protocols)
+    *  UART (Universal Asynchronous Transmitter Reciever)
+    *  I2C (Inter Integrated Circuit)
+    *  SPI (Serial Peripheral Interface)
+* Touch Pins
+* Wi-Fi mode
+  * Different Wi-Fi modes
+  * Wi-Fi communication protocols in ESP32
+    * HTTP
+    * MQTT
+    * WebSocket
+    * TCP/UDP
+
+
+
 ## Key Points:
 * ESP Devkit = ESP32 + Other components.
 * The ESP32 core module is shielded with a metallic cover to isolate it on the DevKit to reduce EM interference and obtain clean signals. The metallic cover also acts as a natural heat sink.
@@ -103,7 +130,7 @@
 
 
 
-# How ESP32 Talks to other devices (Communication protcols):
+# How ESP32 Talks to other devices (Communication Protocols):
 ## Serial Communication:
 ### UART (Universal Asynchronous Transmitter Reciever):
 * UART is a full-duplex asynchronous 2-wire serial communication protocol, which is used every time we upload code to the ESP32 or check the serial monitor to print debug messages.
@@ -127,6 +154,49 @@
 
 
 
+# Wi-Fi:
+* ESP32 supports standard Wi-Fi 802.11 b/g/n.
+* It operates in the 2.4 GHz band.
+* It can operate in 3 modes:
+    1. STA (Station mode): 
+    2. AP (Access Point mode):
+    3. STA + AP mode
+
+1. STA mode:
+  * In station mode, ESP32 connects to an existing wi-fi network, acting as a client to the server and connects to the internet through a Router (Access Point), just like other devices like mobile phones, laptops, etc.
+  * Can pull or push data from the cloud using protocols like HTTP, MQTT.
+
+2. AP mode:
+  * In access point mode, ESP32 creates its own wi-fi hotspot, enabling devices like mobile phones and laptops to connect to it.
+  * No internet or router needed.
+  * It can serve web pages locally.
+
+## Wi-Fi communication protocols in ESP32:
+1. HTTP - Hypertext Transfer Protocol:
+   * It's the same protocol our browser uses to load web pages.
+   * ESP32 can send GET and POST requests to web servers and APIs.
+   * Easy to use and supported everywhere.
+   * Best for: Cloud APIs, basic control systems, and data logging
+  
+2. MQTT - Message Queueing Telemetry Transport:
+   * Lightweight protocol and designed for real-time IoT messaging.
+   * Works on a publish-subscribe model.
+   * But, requires a broker like Mosquitto to handle messages.
+   * Best for: Live sensor feeds, automation, smart homes.
+  
+  3. WebSocket:
+   * Full-duplex communication, means both sides can send data at the same time.
+   * More efficient than HTTP for continuous data streams.
+   * Best for: Live dashboards, real-time control panels.
+
+  4. TCP/UDP (Low-Level Protocols)
+   * TCP: Reliable, connection-oriented.
+   * UDP: Faster, connectionless, but less reliable.
+   * TCP/UDP are used when we need custom, fast data exchange between devices.
+
+## Assigning ESP32 to  a specific Wi-Fi mode:
+## STA (Station mode): Find code in the dedicated folder
+## AP (Access Point mode): Find code in the dedicated folder
 
 
 
