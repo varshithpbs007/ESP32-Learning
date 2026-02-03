@@ -4,6 +4,7 @@
 * What happens just after power is supplied and the ESP32 is powered on
     * Boot Process (Physically)
 * Power Pins & GPIOs
+* Boot Button
 * Bootstrapping pins
 * Flash pins (GPIO 6 - 11) [NEVER TOUCH THEM]
 * Input-only pins ( GPIO 34,35,36,39 )
@@ -39,7 +40,7 @@
 * i.e., EN = 3.3v(HIGH/untouched) means ESP32 runs, if EN = 0v(LOW/Pushed) means ESP32 is held in reset.
 * 512 Kb internal SRAM, which is inside the ESP32 chip itself, etched on the same silicon die as CPU cores and registers. Internal SRAM is used for stack, heap, Global/static variables, RTOS tasks, and Runtime data.
 * SRAM is very fast, but Volatile (lost when power off) and its size is fixed at fabrication.
-* 4 MB external flash memory is a seperate IC block on the DevKit and is connected via SPI/QSPI lines to esp32. Its used for program code(.text), constants, Firmware, File systems (SPIFFS/LittleFS), OTA updates.
+* 4 MB external flash memory is a seperate IC block on the DevKit and is connected via SPI/QSPI lines to esp32. It's used for program code(.text), constants, Firmware, File systems (SPIFFS/LittleFS), and OTA updates.
 * External flash memory is non-volatile (retains data without power), but slower than SRAM.
 
   
@@ -86,7 +87,10 @@
   * If GPIO 0 is LOW(0V), the ESP32 enters UART download mode and waits for new firmware.
   * This design ensures that even if the firmware in flash is corrupted, the chip remains programmable.
   * On development boards, the USB-to-UART interface (generally a USB-to-UART chip) automatically pulls GPIO0 low using the wired DTR(Data Terminal Ready) signal, resets the chip during flashing (EN pin toggle) using wired RTS(Ready to Send) signal, which is why we can upload code from Arduino IDE without manual intervention.
-
+  ### Boot Button:
+  * Boot button = GPIO 0 control.
+  * The Boot button is physiclly connected to GPIO 0 and pushing that pulls GPIO 0 to LOW and releasing it makes GPIO 0 HIGH again.
+  * GPIO 0 is HIGH (3.3V) by default, and has an internal pull-up resistor
   ### GPIO 2:
   ### GPIO 12:
   ### GPIO 15:
