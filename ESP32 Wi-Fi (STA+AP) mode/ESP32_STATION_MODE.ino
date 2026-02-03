@@ -1,16 +1,19 @@
 #include <WiFi.h>
 
-const char* ssid = "Death Dealer"; // Wi-Fi's SSID, i.e., name of the router, declared as a constant string
-const char* password = "112233445"; // Wi-Fi's password decclared as a constant string
+const char* ssid = "Varshith"; // Wi-Fi's SSID i.e., name of the router, declared as a constant string
+const char* password = "pubhasava"; // Wi-Fi's password decclared as a constant string
 
 void setup() { //This setup function code runs only once
   Serial.begin(115200);
+  delay(1000); // delay of 1s
 
-// 1. Set WiFi mode to Station
-  WiFi.mode(STA);
+// 1. Setting WiFi mode and clearing previous WiFi data for a fresh connection
+  WiFi.mode(WIFI_STA);
+  WiFi.disconnect(true);
+  delay(100); // delay of 10ms
 
-// 2. Begin connection to AP
-  Wifi.begin(ssid, password);
+// 2. Begin new connection to router(AP)
+  WiFi.begin(ssid, password);
   Serial.print("Connecting to Wi-Fi");
 
 // 3. Wait for IP assignment by the AP through DHCP
@@ -31,4 +34,3 @@ void loop() {
   // nothing here for now
 
 }
-
