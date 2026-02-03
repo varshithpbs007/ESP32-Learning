@@ -90,7 +90,19 @@
   ### Boot Button:
   * Boot button = GPIO 0 control.
   * The Boot button is physiclly connected to GPIO 0 and pushing that pulls GPIO 0 to LOW and releasing it makes GPIO 0 HIGH again.
-  * GPIO 0 is HIGH (3.3V) by default, and has an internal pull-up resistor
+  * GPIO 0 is HIGH (3.3V) by default, and has an internal pull-up resistor.
+  * By default GPIO 0 HIGH (Boot button unpressed) means Boot from flash (our code).
+  * GPIO 0 LOW (Boot button pressed and hold) means enter UART download mode.
+  ### EN (Reset) button:
+  * Pushing and releasing the EN button resets the ESP32 and makes it run firmware from flash. (If the boot button is unpressed during reset the ESP32 boots normally and executes firnware from flash memory) 
+ 
+
+
+
+
+
+
+
   ### GPIO 2:
   ### GPIO 12:
   ### GPIO 15:
