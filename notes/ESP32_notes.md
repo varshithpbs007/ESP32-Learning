@@ -4,7 +4,8 @@
 * What happens just after power is supplied and the ESP32 is powered on
     * Boot Process (Physically)
 * Power Pins & GPIOs
-* Boot Button
+* Boot button
+* EN (reset) button
 * Bootstrapping pins
 * Flash pins (GPIO 6 - 11) [NEVER TOUCH THEM]
 * Input-only pins ( GPIO 34,35,36,39 )
