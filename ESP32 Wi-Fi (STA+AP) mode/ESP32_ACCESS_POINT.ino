@@ -16,7 +16,7 @@ void setup()
   Serial.println("Acceess Point Started");
   Serial.print("IP address:");
   Serial.println(WiFi.softAPIP()); // This will return the IP address ESP32 assigns itself during hotspot in Access Point mode, which can be used to request the server(ESP32) for webpages
-
+  // Generally the IP address is AP mode is 192.168.4.1
 }
 
 void loop()
