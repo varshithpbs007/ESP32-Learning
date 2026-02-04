@@ -1,6 +1,6 @@
 #include <WiFi.h>
 
-const char* ssid = "Varshith"; // Wi-Fi's SSID i.e., name of the router, declared as a constant string
+const char* ssid = "varshith"; // Wi-Fi's SSID i.e., name of the router, declared as a constant string
 const char* password = "pubhasava"; // Wi-Fi's password decclared as a constant string
 
 void setup() { //This setup function code runs only once
