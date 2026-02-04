@@ -1,6 +1,10 @@
+// 1. ESP32 supports only 2.4 GHz Wi-Fi with WPA2. Phone hotspots often operate at 2.4 GHz, which is why connection succeeded.
+// 2. but some latest dual-band routers need explicit 2.4 GHz configuration. 
+
+
 #include <WiFi.h>
 
-const char* ssid = "varshith"; // Wi-Fi's SSID i.e., name of the router, declared as a constant string
+const char* ssid = "varshith"; // APs (my iphone here in hotspot) SSID i.e., name of the router, declared as a constant string
 const char* password = "pubhasava"; // Wi-Fi's password decclared as a constant string
 
 void setup() { //This setup function code runs only once
