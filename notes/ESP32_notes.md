@@ -1,7 +1,7 @@
 # ESP32 Notes
 # Index:
 * Key Points
-* What happens just after power is supplied and the ESP32 is powered on
+* What happens just after power is supplied and the ESP32 is powered on:
     * Boot Process (Physically)
 * Power Pins & GPIOs
 * Boot button
@@ -13,14 +13,16 @@
 * Analog input pins
 * PWM (Pulse Width Modulation) pins
 *  DAC Pins
-*  How ESP32 Talks to Other Devices (Communication Protocols)
+*  How ESP32 Talks to Other Devices (Communication Protocols):
     *  UART (Universal Asynchronous Transmitter Reciever)
     *  I2C (Inter Integrated Circuit)
     *  SPI (Serial Peripheral Interface)
 * Touch Pins
-* Wi-Fi mode
-  * Different Wi-Fi modes
-  * Wi-Fi communication protocols in ESP32
+* Wi-Fi mode in ESP32:
+  * Different Wi-Fi modes:
+    * STA mode
+    * AP mode
+  * Wi-Fi communication protocols in ESP32:
     * HTTP
     * MQTT
     * WebSocket
@@ -187,6 +189,7 @@
   * In access point mode, ESP32 creates its own wi-fi hotspot, enabling devices like mobile phones and laptops to connect to it.
   * No internet or router needed.
   * It can serve web pages locally.
+  * 
 
 ## Wi-Fi communication protocols in ESP32:
 1. HTTP - Hypertext Transfer Protocol:
